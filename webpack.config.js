@@ -6,7 +6,7 @@ const srcDir = path.resolve(__dirname, 'src')
 const outputDir = path.resolve(__dirname, 'dist')
 
 module.exports = {
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
   entry: path.join(srcDir, 'index.tsx'),
   output: {
     path: outputDir,

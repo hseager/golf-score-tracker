@@ -1,15 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es5",
     "jsx": "react",
-    "moduleResolution": "node",
-    "strict": true,
-    "noEmit": true,
     "allowJs": true,
-    "skipLibCheck": true,
-    "isolatedModules": true,
+    "moduleResolution": "node",
     "esModuleInterop": true
-  },
-  "include": ["src"]
+  }
 }
