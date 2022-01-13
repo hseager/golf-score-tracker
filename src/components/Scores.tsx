@@ -1,12 +1,26 @@
 import React from 'react'
+import ScoreRow from './ScoreRow'
 
-const Scores = () => {
+type ScoreProps = {
+  holes: number
+}
+
+const Scores = ({ holes }: ScoreProps) => {
   return (
-    <div>
-      <input type="number" />
-      <input type="number" />
-      <input type="number" />
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Hole</th>
+          <th>Par</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[...Array(holes)].map((hole, i) => (
+          <ScoreRow key={i} hole={i + 1} />
+        ))}
+      </tbody>
+    </table>
   )
 }
 

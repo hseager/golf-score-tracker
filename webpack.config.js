@@ -6,7 +6,7 @@ const srcDir = path.resolve(__dirname, 'src')
 const outputDir = path.resolve(__dirname, 'dist')
 
 module.exports = {
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   entry: path.join(srcDir, 'index.tsx'),
   output: {
     path: outputDir,
@@ -24,6 +24,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: path.join(srcDir, 'index.html'),
+      inject: 'body',
     }),
   ],
   module: {
@@ -43,5 +44,9 @@ module.exports = {
         },
       },
     ],
+  },
+  devServer: {
+    static: outputDir,
+    compress: true,
   },
 }
