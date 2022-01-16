@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import ScoreRow from './ScoreRow'
 
 type ScoreProps = {
@@ -16,7 +16,7 @@ const Scores = ({ holes }: ScoreProps) => {
         </tr>
       </thead>
       <tbody>
-        {[...Array(holes)].map((hole, i) => (
+        {[...Array(holes)].map((row, i) => (
           <ScoreRow key={i} hole={i + 1} />
         ))}
       </tbody>

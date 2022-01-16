@@ -3,11 +3,17 @@ import Scores from './Scores'
 import Controls from './Controls'
 
 const App = () => {
-  const [holes, setHoles] = useState(9)
+  const [courses, setCourses] = useState(['Dunston', 'Wensum Valley'])
+  const [holes, setHoles] = useState(18)
 
   return (
     <>
-      <Controls holes={holes} setHoles={setHoles} />
+      <Controls
+        courses={courses}
+        setCourses={setCourses}
+        holes={holes}
+        setHoles={setHoles}
+      />
       <Scores holes={holes} />
     </>
   )
