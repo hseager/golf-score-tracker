@@ -1,18 +1,15 @@
 import React from 'react'
+import Score from '../types/Score'
 
-type ScoreRowProps = {
-  hole: number
-}
-
-const ScoreRow = ({ hole }: ScoreRowProps) => {
+const ScoreRow = ({ hole, par, score }: Score) => {
   return (
     <tr>
       <td>{hole}</td>
       <td>
-        <input type="number" value="3" min="3" onChange={() => {}} />
+        <input type="number" value={par} min={1} onChange={() => {}} />
       </td>
       <td>
-        <input type="number" value="0" min="0" onChange={() => {}} />
+        <input type="number" value={score} min={0} onChange={() => {}} />
       </td>
     </tr>
   )

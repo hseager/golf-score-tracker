@@ -1,20 +1,19 @@
-import React, { useState } from 'react'
+import React, { useReducer } from 'react'
+import { reducer, initialState } from '../reducers/appReducer'
 import Scores from './Scores'
 import Controls from './Controls'
 
 const App = () => {
-  const [courses, setCourses] = useState(['Dunston', 'Wensum Valley'])
-  const [holes, setHoles] = useState(18)
+  const [state, dispatch] = useReducer(reducer, initialState)
 
   return (
     <>
       <Controls
-        courses={courses}
-        setCourses={setCourses}
-        holes={holes}
-        setHoles={setHoles}
+        courses={state.courses}
+        holes={state.holes}
+        dispatch={dispatch}
       />
-      <Scores holes={holes} />
+      <Scores scores={state.scores} />
     </>
   )
 }

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import ScoreRow from './ScoreRow'
+import Score from '../types/Score'
 
 type ScoreProps = {
-  holes: number
+  scores: Array<Score>
 }
 
-const Scores = ({ holes }: ScoreProps) => {
+const Scores = ({ scores }: ScoreProps) => {
   return (
     <table>
       <thead>
@@ -16,8 +17,13 @@ const Scores = ({ holes }: ScoreProps) => {
         </tr>
       </thead>
       <tbody>
-        {[...Array(holes)].map((row, i) => (
-          <ScoreRow key={i} hole={i + 1} />
+        {scores.map((score) => (
+          <ScoreRow
+            key={score.hole}
+            hole={score.hole}
+            par={score.par}
+            score={score.score}
+          />
         ))}
       </tbody>
     </table>
