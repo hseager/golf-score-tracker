@@ -8,7 +8,7 @@ type ScoreProps = {
 
 const Scores = ({ scores }: ScoreProps) => {
   return (
-    <table>
+    <table className="w-full border-collapse" cellSpacing={0} cellPadding={0}>
       <thead>
         <tr>
           <th>Hole</th>
