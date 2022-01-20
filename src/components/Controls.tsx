@@ -8,7 +8,7 @@ type ControlProps = {
 }
 
 const minHoles = 1
-const maxHoles = 18
+const maxHoles = 108
 
 const Controls = ({ courses, holes, dispatch }: ControlProps) => {
   const handleHoleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,26 +21,27 @@ const Controls = ({ courses, holes, dispatch }: ControlProps) => {
   }
 
   return (
-    <div>
-      {courses.length > 0 && (
-        <>
-          <label>Course</label>
-          <select>
-            {courses.map((course, i) => (
-              <option key={i}>{course}</option>
-            ))}
-          </select>
-        </>
-      )}
-
-      <label>Holes</label>
-      <input
-        type="number"
-        value={holes}
-        onChange={handleHoleChange}
-        min={minHoles}
-        max={maxHoles}
-      />
+    <div className="bg-green-400 p-4 px-5 flex items-center border-b border-green-600">
+      <div className="mr-4">
+        <label className="text-sm mr-3">Course:</label>
+        <select className="text-sm bg-white p-2 rounded-md">
+          {courses.map((course, i) => (
+            <option key={i}>{course}</option>
+          ))}
+          <option value={0}>Add Course</option>
+        </select>
+      </div>
+      <div>
+        <label className="text-sm mr-3">Holes:</label>
+        <input
+          type="number"
+          className="w-16 p-1 rounded-md text-center"
+          value={holes}
+          onChange={handleHoleChange}
+          min={minHoles}
+          max={maxHoles}
+        />
+      </div>
     </div>
   )
 }

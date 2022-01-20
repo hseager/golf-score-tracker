@@ -7,13 +7,13 @@ const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   return (
-    <main className="bg-emerald-500 p-4 rounded-lg shadow-md shadow-gray-300">
+    <main>
       <Controls
         courses={state.courses}
         holes={state.holes}
         dispatch={dispatch}
       />
-      <Scores scores={state.scores} />
+      <Scores scores={state.scores} dispatch={dispatch} />
     </main>
   )
 }
