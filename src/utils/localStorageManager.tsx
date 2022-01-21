@@ -1,9 +1,9 @@
 import Score from '../types/Score'
 
-export const saveCourse = (course: String) => {
+export const saveCourse = (course: string) => {
   const courses = getCourses()
   courses.push(course)
-  localStorage.courses = courses
+  localStorage.courses = JSON.stringify(courses)
 }
 
 export const getCourses = () => {

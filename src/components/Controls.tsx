@@ -3,6 +3,7 @@ import { ActionTypes } from '../types/ActionTypes'
 import { saveCourse } from '../utils/localStorageManager'
 
 type ControlProps = {
+  course: string
   setCourse: Function
   courses: Array<string>
   holes: number
@@ -13,7 +14,13 @@ const minHoles = 1
 const maxHoles = 108
 const addCourseValue = 'add-course'
 
-const Controls = ({ setCourse, courses, holes, dispatch }: ControlProps) => {
+const Controls = ({
+  course,
+  setCourse,
+  courses,
+  holes,
+  dispatch,
+}: ControlProps) => {
   const [courseName, setCourseName] = useState('')
   const [addingCourse, setAddingCourse] = useState(
     courses.length === 0 ? true : false
@@ -84,9 +91,10 @@ const Controls = ({ setCourse, courses, holes, dispatch }: ControlProps) => {
             <select
               className="text-sm bg-white p-2 h-9 w-36 rounded-md border border-slate-200"
               onChange={handleCourseChange}
+              value={course}
             >
-              {courses.map((course, i) => (
-                <option key={i}>{course}</option>
+              {courses.map((name, i) => (
+                <option key={i}>{name}</option>
               ))}
               <option value={addCourseValue}>Add Course</option>
             </select>

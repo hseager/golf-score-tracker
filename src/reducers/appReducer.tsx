@@ -1,6 +1,7 @@
 import AppState from '../types/AppState'
 import { ActionTypes } from '../types/ActionTypes'
 import Action from '../types/Action'
+import { getCourses } from '../utils/localStorageManager'
 
 const defaultHoles = 18
 
@@ -18,7 +19,7 @@ const generateScores = (holes: number) => {
 
 export const initialState: AppState = {
   holes: defaultHoles,
-  courses: [],
+  courses: getCourses(),
   scores: generateScores(defaultHoles),
 }
 
