@@ -1,16 +1,26 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import ScoreRow from './ScoreRow'
 import Score from '../types/Score'
 
 type ScoreProps = {
+  courses: Array<String>
   scores: Array<Score>
   dispatch: Function
 }
 
-const Scores = ({ scores, dispatch }: ScoreProps) => {
+const courseErrorMessage = 'Please select a course'
+
+const Scores = ({ courses, scores, dispatch }: ScoreProps) => {
+  const [error, setError] = useState('')
+
   const saveScore = () => {
-    console.log(1)
+    if (courses.length === 0) {
+      setError(courseErrorMessage)
+    } else {
+      setError('')
+    }
   }
+
   return (
     <>
       <div className="p-4">
@@ -30,6 +40,11 @@ const Scores = ({ scores, dispatch }: ScoreProps) => {
             />
           ))}
         </div>
+        {error && (
+          <div className="my-4 bg-orange-200 py-2 px-4 rounded-md text-orange-900 border border-orange-300">
+            <p>{error}</p>
+          </div>
+        )}
         <button
           className="px-6 py-2 bg-green-400 rounded-md border-b border-green-600 active:border-t active:border-b-0"
           onClick={saveScore}

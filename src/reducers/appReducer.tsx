@@ -38,24 +38,25 @@ export const reducer = (state: AppState, action: Action) => {
     case ActionTypes.UpdatePar:
       return {
         ...state,
-        scores: [
-          ...state.scores.map((score) =>
-            score.hole === action.payload.key
-              ? { ...score, par: action.payload.value }
-              : score
-          ),
-        ],
+        scores: state.scores.map((score) =>
+          score.hole === action.payload.key
+            ? { ...score, par: action.payload.value }
+            : score
+        ),
       }
     case ActionTypes.UpdateScore:
       return {
         ...state,
-        scores: [
-          ...state.scores.map((score) =>
-            score.hole === action.payload.key
-              ? { ...score, score: action.payload.value }
-              : score
-          ),
-        ],
+        scores: state.scores.map((score) =>
+          score.hole === action.payload.key
+            ? { ...score, score: action.payload.value }
+            : score
+        ),
+      }
+    case ActionTypes.AddCourse:
+      return {
+        ...state,
+        courses: [...state.courses, action.payload.value],
       }
     default:
       throw new Error(`Unknown action type: ${action.type}`)

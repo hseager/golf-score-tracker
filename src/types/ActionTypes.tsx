@@ -3,4 +3,5 @@ export enum ActionTypes {
   UpdateHoles,
   UpdatePar,
   UpdateScore,
+  AddCourse,
 }
