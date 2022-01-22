@@ -92,7 +92,7 @@ const Controls = ({
                   }}
                 />
                 <button
-                  className="px-4 pb-1 h-9 bg-green-600 rounded-r-md"
+                  className="px-4 pb-1 h-9 bg-green-400 rounded-r-md"
                   onClick={handleAddCourse}
                 >
                   +
