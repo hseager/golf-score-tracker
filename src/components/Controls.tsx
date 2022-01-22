@@ -77,52 +77,54 @@ const Controls = ({
   }
 
   return (
-    <div className="bg-amber-100 p-4 px-5 flex items-center border-b border-amber-300">
-      <div className="mr-4">
-        <div className="flex items-center">
-          {addingCourse && (
-            <>
-              <input
-                type="text"
-                placeholder="Add Course"
-                className="text-sm bg-white p-2 rounded-l-md w-28 h-9 border border-slate-200 outline-none"
-                onChange={(e) => {
-                  setCourseName(e.target.value)
-                }}
-              />
-              <button
-                className="px-4 pb-1 h-9 bg-green-600 rounded-r-md"
-                onClick={handleAddCourse}
+    <div className="bg-amber-100 py-4 border-b border-amber-300">
+      <div className="max-w-2xl mx-auto flex items-center px-4">
+        <div className="mr-4">
+          <div className="flex items-center">
+            {addingCourse && (
+              <>
+                <input
+                  type="text"
+                  placeholder="Add Course"
+                  className="text-sm bg-white p-2 rounded-l-md w-28 h-9 border border-slate-200 outline-none"
+                  onChange={(e) => {
+                    setCourseName(e.target.value)
+                  }}
+                />
+                <button
+                  className="px-4 pb-1 h-9 bg-green-600 rounded-r-md"
+                  onClick={handleAddCourse}
+                >
+                  +
+                </button>
+              </>
+            )}
+            {!addingCourse && (
+              <select
+                className="text-sm bg-white p-2 h-9 w-36 rounded-md border border-slate-200"
+                onChange={handleCourseChange}
+                value={course}
               >
-                +
-              </button>
-            </>
-          )}
-          {!addingCourse && (
-            <select
-              className="text-sm bg-white p-2 h-9 w-36 rounded-md border border-slate-200"
-              onChange={handleCourseChange}
-              value={course}
-            >
-              {courses.map((name, i) => (
-                <option key={i}>{name}</option>
-              ))}
-              <option value={addCourseValue}>Add Course</option>
-            </select>
-          )}
+                {courses.map((name, i) => (
+                  <option key={i}>{name}</option>
+                ))}
+                <option value={addCourseValue}>Add Course</option>
+              </select>
+            )}
+          </div>
         </div>
-      </div>
-      <div>
-        <label className="text-sm mr-3">Holes:</label>
-        <input
-          type="number"
-          className="w-16 p-1 rounded-md text-center border border-slate-200"
-          value={holes.toString()}
-          onChange={handleHoleChange}
-          onBlur={handleHolesBlur}
-          min={minHoles}
-          max={maxHoles}
-        />
+        <div>
+          <label className="text-sm mr-3">Holes:</label>
+          <input
+            type="number"
+            className="w-16 p-1 rounded-md text-center border border-slate-200"
+            value={holes.toString()}
+            onChange={handleHoleChange}
+            onBlur={handleHolesBlur}
+            min={minHoles}
+            max={maxHoles}
+          />
+        </div>
       </div>
     </div>
   )

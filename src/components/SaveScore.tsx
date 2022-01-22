@@ -30,7 +30,7 @@ const SaveScore = ({ course, scoreCard, dispatch }: SaveScoreProps) => {
   }
 
   return (
-    <div className="m-4 flex justify-between">
+    <div className="m-4 flex justify-between max-w-2xl mx-auto px-4">
       {error && (
         <div className="mb-4 bg-orange-200 py-2 px-4 rounded-md text-orange-900 border border-orange-300">
           <p>{error}</p>

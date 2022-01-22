@@ -14,7 +14,7 @@ const ScoreCard = ({ scoreCard, dispatch }: ScoreProps) => {
   }, [scoreCard])
 
   return (
-    <div className="m-4">
+    <div className="my-4 px-4 max-w-2xl mx-auto">
       <div className="flex justify-between text-center text-sm border-b-2 border-slate-200 pb-2 pl-2">
         <h4>Hole</h4>
         <h4 className="flex-grow">Par</h4>

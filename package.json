@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.tsx",
+  "homepage": "http://hseager.github.io/golf-score-tracker",
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack serve --mode development --open",
+    "predeploy": "webpack --mode production",
+    "deploy": "gh-pages -d dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -25,6 +28,7 @@
     "autoprefixer": "^10.4.2",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
+    "gh-pages": "^3.2.3",
     "html-webpack-plugin": "^5.5.0",
     "postcss": "^8.4.5",
     "postcss-loader": "^6.2.1",
