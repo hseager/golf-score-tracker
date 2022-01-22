@@ -1,13 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import ScoreRow from './ScoreRow'
 import Score from '../types/Score'
+import { saveCurrentScoreCard } from '../utils/localStorageManager'
 
 type ScoreProps = {
-  scores: Array<Score>
+  scoreCard: Array<Score>
   dispatch: Function
 }
 
-const Scores = ({ scores, dispatch }: ScoreProps) => {
+const ScoreCard = ({ scoreCard, dispatch }: ScoreProps) => {
+  useEffect(() => {
+    saveCurrentScoreCard(scoreCard)
+  }, [scoreCard])
+
   return (
     <div className="m-4">
       <div className="flex justify-between text-center text-sm border-b-2 border-slate-200 pb-2 pl-2">
@@ -16,7 +21,7 @@ const Scores = ({ scores, dispatch }: ScoreProps) => {
         <h4 className="flex-grow">Score</h4>
       </div>
       <div>
-        {scores.map((score) => (
+        {scoreCard.map((score) => (
           <ScoreRow
             key={score.hole}
             hole={score.hole}
@@ -30,4 +35,4 @@ const Scores = ({ scores, dispatch }: ScoreProps) => {
   )
 }
 
-export default Scores
+export default ScoreCard

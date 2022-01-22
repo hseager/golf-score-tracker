@@ -42,7 +42,7 @@ const ScoreRow = ({ hole, par, score, dispatch }: ScoreRowProps) => {
   }
 
   return (
-    <div className="flex bg-white my-4 items-stretch">
+    <div className="flex bg-white my-3 items-stretch">
       <div className="bg-green-400 px-2 py-4 rounded-l-md w-20 text-center text-md border-b border-green-600">
         {hole}
       </div>

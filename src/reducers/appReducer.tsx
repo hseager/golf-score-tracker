@@ -1,26 +1,26 @@
 import AppState from '../types/AppState'
 import { ActionTypes } from '../types/ActionTypes'
 import Action from '../types/Action'
-import { getCourses } from '../utils/localStorageManager'
+import { getCourses, getCurrentScoreCard } from '../utils/localStorageManager'
 
 const defaultHoles = 18
 
-const generateScores = (startingHole: number, holes: number) => {
-  let scores = []
+const generateScoreCard = (startingHole: number, holes: number) => {
+  let scoreCard = []
   for (let i = startingHole; i < startingHole + holes; i++) {
-    scores.push({
+    scoreCard.push({
       hole: i,
       par: 3,
       score: 0,
     })
   }
-  return scores
+  return scoreCard
 }
 
 export const initialState: AppState = {
-  holes: defaultHoles,
+  holes: getCurrentScoreCard() ? getCurrentScoreCard().length : defaultHoles,
   courses: getCourses(),
-  scores: generateScores(1, defaultHoles),
+  scoreCard: getCurrentScoreCard() || generateScoreCard(1, defaultHoles),
 }
 
 export const reducer = (state: AppState, action: Action) => {
@@ -36,22 +36,26 @@ export const reducer = (state: AppState, action: Action) => {
         return {
           ...state,
           holes: action.payload.value,
-          scores: [...state.scores.slice(0, state.scores.length - difference)],
+          scoreCard: [
+            ...state.scoreCard.slice(0, state.scoreCard.length - difference),
+          ],
         }
       } else if (action.payload.value > state.holes) {
         const difference = action.payload.value - state.holes
         return {
           ...state,
           holes: action.payload.value,
-          scores: [
-            ...state.scores.concat(generateScores(state.holes + 1, difference)),
+          scoreCard: [
+            ...state.scoreCard.concat(
+              generateScoreCard(state.holes + 1, difference)
+            ),
           ],
         }
       }
     case ActionTypes.UpdatePar:
       return {
         ...state,
-        scores: state.scores.map((score) =>
+        scoreCard: state.scoreCard.map((score) =>
           score.hole === action.payload.key
             ? { ...score, par: action.payload.value }
             : score
@@ -60,7 +64,7 @@ export const reducer = (state: AppState, action: Action) => {
     case ActionTypes.UpdateScore:
       return {
         ...state,
-        scores: state.scores.map((score) =>
+        scoreCard: state.scoreCard.map((score) =>
           score.hole === action.payload.key
             ? { ...score, score: action.payload.value }
             : score

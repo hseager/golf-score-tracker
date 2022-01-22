@@ -1,6 +1,6 @@
 import React, { useState, useReducer } from 'react'
 import { reducer, initialState } from '../reducers/appReducer'
-import Scores from './Scores'
+import ScoreCard from './ScoreCard'
 import Controls from './Controls'
 import SaveScore from './SaveScore'
 
@@ -19,8 +19,8 @@ const App = () => {
         holes={state.holes}
         dispatch={dispatch}
       />
-      <Scores scores={state.scores} dispatch={dispatch} />
-      <SaveScore course={course} />
+      <ScoreCard scoreCard={state.scoreCard} dispatch={dispatch} />
+      <SaveScore scoreCard={state.scoreCard} course={course} />
     </main>
   )
 }

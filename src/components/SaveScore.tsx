@@ -1,17 +1,21 @@
 import React, { useState } from 'react'
+import Score from '../types/Score'
+import { saveGame } from '../utils/localStorageManager'
 
 type SaveScoreProps = {
   course: string
+  scoreCard: Array<Score>
 }
 
 const courseErrorMessage = 'Please select a course'
 
-const SaveScore = ({ course }: SaveScoreProps) => {
+const SaveScore = ({ course, scoreCard }: SaveScoreProps) => {
   const [error, setError] = useState('')
 
   const saveScore = () => {
     if (course) {
       setError('')
+      saveGame(course, scoreCard)
     } else {
       setError(courseErrorMessage)
     }
