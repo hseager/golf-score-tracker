@@ -20,7 +20,11 @@ const App = () => {
         dispatch={dispatch}
       />
       <ScoreCard scoreCard={state.scoreCard} dispatch={dispatch} />
-      <SaveScore scoreCard={state.scoreCard} course={course} />
+      <SaveScore
+        scoreCard={state.scoreCard}
+        course={course}
+        dispatch={dispatch}
+      />
     </main>
   )
 }

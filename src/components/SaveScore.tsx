@@ -1,18 +1,20 @@
 import React, { useState } from 'react'
+import { ActionTypes } from '../types/ActionTypes'
 import Score from '../types/Score'
 import { saveGame } from '../utils/localStorageManager'
 
 type SaveScoreProps = {
   course: string
   scoreCard: Array<Score>
+  dispatch: Function
 }
 
 const courseErrorMessage = 'Please select a course'
 
-const SaveScore = ({ course, scoreCard }: SaveScoreProps) => {
+const SaveScore = ({ course, scoreCard, dispatch }: SaveScoreProps) => {
   const [error, setError] = useState('')
 
-  const saveScore = () => {
+  const saveScoreCard = () => {
     if (course) {
       setError('')
       saveGame(course, scoreCard)
@@ -21,8 +23,14 @@ const SaveScore = ({ course, scoreCard }: SaveScoreProps) => {
     }
   }
 
+  const resetScoreCard = () => {
+    dispatch({
+      type: ActionTypes.ResetScoreCard,
+    })
+  }
+
   return (
-    <div className="m-4">
+    <div className="m-4 flex justify-between">
       {error && (
         <div className="mb-4 bg-orange-200 py-2 px-4 rounded-md text-orange-900 border border-orange-300">
           <p>{error}</p>
@@ -30,9 +38,15 @@ const SaveScore = ({ course, scoreCard }: SaveScoreProps) => {
       )}
       <button
         className="px-6 py-2 bg-green-400 rounded-md border-b border-green-600 active:border-t active:border-b-0"
-        onClick={saveScore}
+        onClick={saveScoreCard}
       >
         Save
+      </button>
+      <button
+        className="px-6 py-2 bg-slate-300 rounded-md border-b border-slate-400 active:border-t active:border-b-0"
+        onClick={resetScoreCard}
+      >
+        Reset
       </button>
     </div>
   )

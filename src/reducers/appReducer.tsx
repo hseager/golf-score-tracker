@@ -61,7 +61,7 @@ export const reducer = (state: AppState, action: Action) => {
             : score
         ),
       }
-    case ActionTypes.UpdateScore:
+    case ActionTypes.UpdateScoreCard:
       return {
         ...state,
         scoreCard: state.scoreCard.map((score) =>
@@ -74,6 +74,12 @@ export const reducer = (state: AppState, action: Action) => {
       return {
         ...state,
         courses: [...state.courses, action.payload.value],
+      }
+    case ActionTypes.ResetScoreCard:
+      return {
+        holes: defaultHoles,
+        courses: getCourses(),
+        scoreCard: generateScoreCard(1, defaultHoles),
       }
     default:
       throw new Error(`Unknown action type: ${action.type}`)

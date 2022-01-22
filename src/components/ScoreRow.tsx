@@ -33,7 +33,7 @@ const ScoreRow = ({ hole, par, score, dispatch }: ScoreRowProps) => {
     let score = parseInt(event.target.value)
     if (score < minScore || !score) score = minScore
     dispatch({
-      type: ActionTypes.UpdateScore,
+      type: ActionTypes.UpdateScoreCard,
       payload: {
         key: hole,
         value: score,
