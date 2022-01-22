@@ -8,26 +8,35 @@ type ScoreRowProps = {
   dispatch: Function
 }
 
+const minPar = 0
+const maxPar = 20
+const minScore = 0
+
 const ScoreRow = ({ hole, par, score, dispatch }: ScoreRowProps) => {
   const inputClass =
-    'w-full text-center bg-white outline-none py-2 rounded-md border-2 border-slate-200'
+    'w-full text-center bg-white outline-none py-2 rounded-md border border-slate-200'
 
   const handleParChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    let par = parseInt(event.target.value)
+    if (par < minPar || !par) par = minPar
+    if (par > maxPar) par = maxPar
     dispatch({
       type: ActionTypes.UpdatePar,
       payload: {
         key: hole,
-        value: parseInt(event.target.value),
+        value: par,
       },
     })
   }
 
   const handleScoreChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    let score = parseInt(event.target.value)
+    if (score < minScore || !score) score = minScore
     dispatch({
       type: ActionTypes.UpdateScore,
       payload: {
         key: hole,
-        value: parseInt(event.target.value),
+        value: score,
       },
     })
   }
@@ -41,9 +50,9 @@ const ScoreRow = ({ hole, par, score, dispatch }: ScoreRowProps) => {
         <input
           type="number"
           className={inputClass}
-          value={par}
-          min={1}
-          max={20}
+          value={par.toString()}
+          min={minPar}
+          max={maxPar}
           onChange={handleParChange}
         />
       </div>
@@ -51,8 +60,8 @@ const ScoreRow = ({ hole, par, score, dispatch }: ScoreRowProps) => {
         <input
           type="number"
           className={inputClass}
-          value={score}
-          min={0}
+          value={score.toString()}
+          min={minScore}
           onChange={handleScoreChange}
         />
       </div>

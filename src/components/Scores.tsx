@@ -10,7 +10,7 @@ type ScoreProps = {
 const Scores = ({ scores, dispatch }: ScoreProps) => {
   return (
     <div className="m-4">
-      <div className="flex justify-between text-center text-sm border-b-2 border-slate-200 py-2 pl-2">
+      <div className="flex justify-between text-center text-sm border-b-2 border-slate-200 pb-2 pl-2">
         <h4>Hole</h4>
         <h4 className="flex-grow">Par</h4>
         <h4 className="flex-grow">Score</h4>

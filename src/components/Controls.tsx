@@ -27,9 +27,20 @@ const Controls = ({
   )
 
   const handleHoleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    let holes = parseInt(event.target.value)
-    if (holes < minHoles) holes = minHoles
+    let holes = parseInt(event.target.value, 10)
+    if (holes < minHoles || !holes) holes = 0
     if (holes > maxHoles) holes = maxHoles
+    dispatch({
+      type: ActionTypes.UpdateHoles,
+      payload: {
+        value: holes,
+      },
+    })
+  }
+
+  const handleHolesBlur = (event: React.ChangeEvent<HTMLInputElement>) => {
+    let holes = parseInt(event.target.value, 10)
+    if (!holes) holes = minHoles
     dispatch({
       type: ActionTypes.UpdateHoles,
       payload: {
@@ -66,7 +77,7 @@ const Controls = ({
   }
 
   return (
-    <div className="bg-green-400 p-4 px-5 flex items-center border-b border-green-600">
+    <div className="bg-amber-100 p-4 px-5 flex items-center border-b border-amber-300">
       <div className="mr-4">
         <div className="flex items-center">
           {addingCourse && (
@@ -106,8 +117,9 @@ const Controls = ({
         <input
           type="number"
           className="w-16 p-1 rounded-md text-center border border-slate-200"
-          value={holes}
+          value={holes.toString()}
           onChange={handleHoleChange}
+          onBlur={handleHolesBlur}
           min={minHoles}
           max={maxHoles}
         />
