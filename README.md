@@ -9,3 +9,14 @@
 - clone repo
 - npm install
 - npm run start
+
+## To do
+
+- Total Score
+- Other players
+- Analytics
+- Games page
+- Save par per course
+- Settings page
+- About page: No Ads, No cookies, free & open source
+- Favicon & meta data

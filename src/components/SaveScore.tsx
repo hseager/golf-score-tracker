@@ -24,9 +24,14 @@ const SaveScore = ({ course, scoreCard, dispatch }: SaveScoreProps) => {
   }
 
   const resetScoreCard = () => {
-    dispatch({
-      type: ActionTypes.ResetScoreCard,
-    })
+    const confirmReset = window.confirm(
+      'Are you sure you want to reset all of your scores?'
+    )
+    if (confirmReset) {
+      dispatch({
+        type: ActionTypes.ResetScoreCard,
+      })
+    }
   }
 
   return (
