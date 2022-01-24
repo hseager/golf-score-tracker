@@ -12,7 +12,6 @@
 
 ## To do
 
-- Total Score
 - Other players
 - Analytics
 - Games page

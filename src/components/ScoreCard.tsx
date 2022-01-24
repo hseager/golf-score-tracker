@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import ScoreRow from './ScoreRow'
 import Score from '../types/Score'
 import { saveCurrentScoreCard } from '../utils/localStorageManager'
@@ -9,8 +9,11 @@ type ScoreProps = {
 }
 
 const ScoreCard = ({ scoreCard, dispatch }: ScoreProps) => {
+  const [totalScore, setTotalScore] = useState(0)
+
   useEffect(() => {
     saveCurrentScoreCard(scoreCard)
+    setTotalScore(scoreCard.reduce((c, n) => c + n.score, 0))
   }, [scoreCard])
 
   return (
@@ -30,6 +33,14 @@ const ScoreCard = ({ scoreCard, dispatch }: ScoreProps) => {
             dispatch={dispatch}
           />
         ))}
+      </div>
+      <div className="flex justify-end">
+        <div className="bg-white my-3 p-2 border-b border-slate-300 rounded-md w-1/2 flex justify-between items-center">
+          Total Score:
+          <span className="py-1 px-3 rounded-md font-semibold">
+            {totalScore}
+          </span>
+        </div>
       </div>
     </div>
   )
