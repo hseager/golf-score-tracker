@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Menu as MenuIcon } from 'react-feather'
 import { X as CloseIcon } from 'react-feather'
+import { Link } from 'react-router-dom'
 
-type MenuProps = {}
-
-const Menu = ({}) => {
+const Menu = () => {
   const [open, setOpen] = useState(false)
 
-  const menuItems = ['Score Card', 'Games']
+  const menuItems = [
+    { title: 'Score Card', link: '/', onClick: () => setOpen(!open) },
+    { title: 'Games', link: 'games' },
+  ]
 
   return (
     <>
@@ -26,7 +28,12 @@ const Menu = ({}) => {
             <ul className="p-6 pt-10">
               {menuItems.map((item, i) => (
                 <li key={i} className="pb-4 mb-4 border-b border-b-slate-300">
-                  {item}
+                  <Link
+                    to={item.link}
+                    onClick={item.onClick ? item.onClick : () => {}}
+                  >
+                    {item.title}
+                  </Link>
                 </li>
               ))}
             </ul>
