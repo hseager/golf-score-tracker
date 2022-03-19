@@ -77,7 +77,7 @@ const Controls = ({
   }
 
   return (
-    <div className="bg-amber-100 py-4 border-b border-amber-300">
+    <div className="bg-amber-100 py-4 border border-t-0 border-amber-200 border-b-amber-300 max-w-2xl m-auto rounded-md">
       <div className="max-w-2xl mx-auto flex items-center px-4">
         <div className="mr-4">
           <div className="flex items-center">
