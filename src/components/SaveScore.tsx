@@ -25,7 +25,7 @@ const SaveScore = ({ course, scoreCard, dispatch }: SaveScoreProps) => {
 
   const resetScoreCard = () => {
     const confirmReset = window.confirm(
-      'Are you sure you want to reset all of your scores?'
+      'Are you sure you want to reset your scores for this game?'
     )
     if (confirmReset) {
       dispatch({

@@ -9,8 +9,9 @@ type ScoreRowProps = {
 }
 
 const minPar = 0
-const maxPar = 20
+const maxPar = 9
 const minScore = 0
+const maxScore = 99
 
 const ScoreRow = ({ hole, par, score, dispatch }: ScoreRowProps) => {
   const inputClass =
@@ -19,7 +20,7 @@ const ScoreRow = ({ hole, par, score, dispatch }: ScoreRowProps) => {
   const handleParChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let par = parseInt(event.target.value)
     if (par < minPar || !par) par = minPar
-    if (par > maxPar) par = maxPar
+    par = Math.abs(par) % 10
     dispatch({
       type: ActionTypes.UpdatePar,
       payload: {
@@ -32,6 +33,7 @@ const ScoreRow = ({ hole, par, score, dispatch }: ScoreRowProps) => {
   const handleScoreChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let score = parseInt(event.target.value)
     if (score < minScore || !score) score = minScore
+    if (score > maxScore) score = maxScore
     dispatch({
       type: ActionTypes.UpdateScoreCard,
       payload: {
@@ -62,6 +64,7 @@ const ScoreRow = ({ hole, par, score, dispatch }: ScoreRowProps) => {
           className={inputClass}
           value={score.toString()}
           min={minScore}
+          max={maxScore}
           onChange={handleScoreChange}
         />
       </div>
