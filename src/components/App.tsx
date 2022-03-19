@@ -1,16 +1,16 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import ScoreCardPage from '../pages/ScoreCardPage'
 import GamesPage from '../pages/GamesPage'
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<ScoreCardPage />} />
         <Route path="games" element={<GamesPage />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
